@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>3D Bus Simulator Ultimate</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/FilmShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/RGBShiftShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/FXAAShader.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-header">
+            <h1>Bus Simulator Ultimate</h1>
+            <div id="score-display">
+                <span>Score: <span id="score">0</span></span>
+                <span>Speed: <span id="speed">0</span> km/h</span>
+                <span>Distance: <span id="distance">0</span> m</span>
+            </div>
+            <div id="environment-display">
+                <span>Area: <span id="area">City</span></span>
+                <span>Weather: <span id="weather">Sunny</span></span>
+            </div>
+        </div>
+        
+        <div id="game-screen">
+            <div id="loading-screen">
+                <div class="loading-content">
+                    <div class="spinner"></div>
+                    <h2>Loading Game...</h2>
+                    <p id="loading-text">Initializing 3D environment</p>
+                    <div class="progress-bar">
+                        <div class="progress" id="loading-progress"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <canvas id="game-canvas"></canvas>
+            
+            <div id="game-over">
+                <h2>Game Over!</h2>
+                <p id="crash-message">You crashed into another vehicle!</p>
+                <p>Final Score: <span id="final-score">0</span></p>
+                <button id="restart-btn"><i class="fas fa-redo"></i> Play Again</button>
+            </div>
+            
+            <div id="fullscreen-btn" onclick="toggleFullscreen()">
+                <i class="fas fa-expand"></i>
+            </div>
+        </div>
+        
+        <div id="controls">
+            <div class="control-row">
+                <div class="control-group left-controls">
+                    <button class="control-btn direction-btn" id="left-btn">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                
+                <div class="control-group center-controls">
+                    <button class="control-btn action-btn" id="accelerate-btn">
+                        <i class="fas fa-chevron-up"></i>
+                        <span class="btn-label">Accelerate</span>
+                    </button>
+                    <button class="control-btn action-btn" id="brake-btn">
+                        <i class="fas fa-chevron-down"></i>
+                        <span class="btn-label">Brake</span>
+                    </button>
+                </div>
+                
+                <div class="control-group right-controls">
+                    <button class="control-btn direction-btn" id="right-btn">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="desktop-controls">
+                <p>Desktop Controls: Arrow Keys / WASD</p>
+                <p>Touch Controls for Mobile</p>
+            </div>
+        </div>
+        
+        <div id="instructions">
+            <p><i class="fas fa-info-circle"></i> Tilt your device to landscape mode for best experience</p>
+            <p><i class="fas fa-expand-alt"></i> Tap expand button for fullscreen</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
